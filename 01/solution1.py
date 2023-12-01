@@ -1,6 +1,4 @@
 #!/usr/bin/env python3
-from functools import reduce, cache
-from itertools import groupby
 
 def calibration(s):
     n = list(filter(lambda x : x in ["0","1","2","3","4","5","6","7","8","9"], s))
