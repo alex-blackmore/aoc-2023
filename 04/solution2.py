@@ -9,7 +9,6 @@ def calculate(xs, x=0):
     return calculate(xs[1:], x + xs[0][1])
 
 def score(line):
-    n = int(line.split(':')[0].split()[1])
     [c1, c2] = line.split('|')
     c1 = c1.split(':')[1].strip().split()
     c2 = c2.strip().split()
