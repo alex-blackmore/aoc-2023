@@ -3,7 +3,7 @@ import itertools as it
 
 def rev_map(ms, x):
     for m in ms:
-        if x in range(m[0], m[0] + m[2]):
+        if x >= m[0] and x < m[0] + m[2]:
             return x - (m[0] - m[1])
     return x
 
@@ -30,7 +30,7 @@ with open("input.txt") as file:
     for i in range(len(ms)):
         ms[i] = list(map(lambda x : list(map(int, x.split())), ms[i].strip().split("\n")))
 
-    for x in it.count(0): # (13 mins runtime)
+    for x in it.count(0): # (4 mins runtime)
         loc = x
         for m in reversed(ms):
             x = rev_map(m, x)
