@@ -28,7 +28,5 @@ with open("input.txt") as file:
     cur_nodes = [node for node in nodes if node[2] == 'A']
     for node in nodes: 
         if node[2] == 'Z': node_tracker[node] = None
-    # get loop lengths
     while any(map(lambda k : node_tracker[k] == None, node_tracker)): loop(instructions)
-    # this only works because the input is friendly
     print(m.lcm(*node_tracker.values()))
