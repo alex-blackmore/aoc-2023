@@ -1,19 +1,7 @@
 #!/usr/bin/env python3
 import functools as ft
-
-def extrapolate(sequence):
-    return list(map(lambda i : sequence[i] - sequence[i - 1], range(1, len(sequence))))
-
-def unextrapolate(known, unknown):
-    return unknown + [unknown[-1] + known[-1]]
-
-with open("input.txt") as file:
-    histories = [[list(map(int, h.split()))] for h in file.read().strip().split("\n")]
-    sum = 0
-    for history in histories: 
-        while any(history[-1]): 
-            history.append(extrapolate(history[-1]))
-        lr = history.pop() + [0]
-        history.reverse()
-        sum += ft.reduce(unextrapolate, history, lr)[-1]
-    print(sum)
+sum = 0
+for z in [[list(map(int, h.split()))] for h in open("input.txt").read().strip().split("\n")]: 
+    while any(z[-1]): z.append(list(map(lambda i : z[-1][i] - z[-1][i - 1], range(1, len(z[-1])))))
+    sum += ft.reduce(lambda x, y : y + [y[-1] + x[-1]], reversed(z[:-1]), z[-1])[-1]
+print(sum)
