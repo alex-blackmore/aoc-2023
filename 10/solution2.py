@@ -32,16 +32,16 @@ with open("input.txt") as file:
             if not (gridmap[location][0] == 'S' and location not in connections(gridmap, next)):
                 queue.append((gridmap, next, 1))
 
+    # one liner
+    print(sum(map(lambda y : len(list(filter(lambda x : len(list(filter(lambda z : gridmap[(y, z)][1] == 1 and gridmap[(y, z)][0] in ['|', 'S', '7', 'F'], range(x)))) % 2 and gridmap[(y, x)][1] != 1, range(len(grid[0]))))), range(len(grid)))))
+
+    # readable code
     sum = 0
     for y in range(len(grid)):
         inside = False
         for x in range(len(grid[0])):
             if gridmap[(y, x)][1] == 1:
-                if gridmap[(y, x)][0] in ['7', 'J']:
-                    prev_bend = gridmap[y, list(filter(lambda x2 : gridmap[(y, x2)][0] in ['L', 'F'] and gridmap[(y, x2)][1] == 1, range(x)))[-1]][0]
-                    if prev_bend == 'L' and gridmap[(y, x)][0] == '7' or prev_bend == 'F' and gridmap[(y, x)][0] == 'J':
-                        inside = not inside
-                elif gridmap[(y, x)][0] in ['|', 'S']: # for my specific case, 'S' is a '|' pipe
+                if gridmap[(y, x)][0] in ['F', '7', '|', 'S']:
                     inside = not inside
             elif inside:
                 sum += 1
