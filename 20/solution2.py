@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-import itertools as it
 import math
 
 TYPE, MEMORY, OUTPUT = 0, 1, 2

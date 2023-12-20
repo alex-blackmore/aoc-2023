@@ -6,9 +6,6 @@ LOW, HIGH, NO_SIGNAL = 0, 1, 2
 encode_type = {'b': 0, '%': 1, '&': 2}
 decode_type = {0: 'broadcaster', 1: 'toggle', 2: 'conjunction'}
 
-# name : type, memory : (self, inputs), outputs
-# buttons = {'broadcaster': (0, {}, ('a', 'b', 'c')), ('a',): (1, {'self': 0}, ('b',))}
-
 def pulse(id, signal, buttons, pulses, source):
     queue = [(id, signal, source)]
 
